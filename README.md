@@ -61,8 +61,7 @@ LED 采用**高电平点亮**（`GPIO_PIN_SET` 为亮）。若实际硬件为低
 ├── Core/
 │   ├── Inc/                     # 头文件（main.h、gpio.h、HAL 配置等）
 │   ├── Src/                     # 源文件（main.c、gpio.c、中断与系统初始化）
-│   ├── Startup/                 # 启动文件 startup_stm32f103c8tx.s
-│   └── Inc/Backup, Src/Backup   # 早期版本的手工备份（*.bak）
+│   └── Startup/                 # 启动文件 startup_stm32f103c8tx.s
 ├── Drivers/
 │   ├── CMSIS/                   # Cortex-M3 内核与设备头文件
 │   └── STM32F1xx_HAL_Driver/    # ST HAL 库
@@ -135,7 +134,8 @@ openocd -f interface/stlink.cfg \
 
 - 本工程由 STM32CubeMX 生成，业务代码全部写在 `USER CODE BEGIN / END` 区块内，
   重新生成代码时不会被覆盖。
-- `Core/Inc/Backup`、`Core/Src/Backup` 为开发过程中的手工备份，不参与编译，可自行删除。
+- 本地开发时可能存在 `Core/Inc/Backup`、`Core/Src/Backup` 等手工备份目录，
+  已通过 `.gitignore` 的 `*.bak` 规则排除，不纳入版本管理。
 - `system_stm32f1xx.c`、`stm32f1xx_hal_msp.c` 等为 HAL 库配套文件，请勿随意修改。
 
 ---
